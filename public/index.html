@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_1300466_8nth4aiy7e7.css">
+    <title>demo</title>
+  </head>
+  
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    document.addEventListener('touchstart',function(event){
+			event.preventDefault();
+		});
+		//点透处理
+		!(function(){
+			var aNodes = document.querySelectorAll('a');
+			for (var i=0;i<aNodes.length;i++) {
+				aNodes[i].addEventListener('touchstart',function(){
+					window.location.href = this.href;
+				});
+			};
+		})();
+		//rem适配
+		!(function(){
+			var width = document.documentElement.clientWidth;
+			var styleNode = document.createElement('style');
+			styleNode.innerHTML = 'html{font-size: '+ width/10 +'px !important;}'
+			document.head.appendChild(styleNode);
+		})();
+  </script>
+</html>
