@@ -2,23 +2,23 @@
   <div id="footer">
     <ul class="foot-list">
       <li :class="{on:'/home'=== $route.path}" @click="goTo('/home')">
-         <i class="iconfont icon-home"></i>
+         <i class="iconfont iconshouye"></i>
          <p>首页</p>
       </li>
       <li :class="{on:'/category'=== $route.path}" @click="goTo('/category')">
-          <i class="iconfont icon-leimupinleifenleileibie2"></i>
+          <i class="iconfont iconfenlei"></i>
           <p>分类</p>
       </li>
       <li :class="{on:'/things'=== $route.path}" @click="goTo('/things')">
-        <i class="iconfont icon-search"></i>
+        <i class="iconfont iconshiwu-shu"></i>
          <p>识物</p>
       </li>
       <li :class="{on:'/shopping'=== $route.path}" @click="goTo('/shopping')">
-         <i class="iconfont icon-gouwucheman"></i>
+         <i class="iconfont icongouwu1"></i>
           <p>购物</p>
       </li>
       <li :class="{on:'/personal'=== $route.path}" @click="goTo('/personal')">
-         <i class="iconfont icon-geren"></i>
+         <i class="iconfont icongeren"></i>
           <p>个人</p>
       </li>
     </ul>
@@ -41,6 +41,7 @@
     left 0
     width 100%
     height 1.30667rem
+    background-color #ffffff
     .foot-list
       width 100%
       height 100%
@@ -55,9 +56,10 @@
         align-items:center
         font-size 16px
         &.on
-          color red 
+          color red
         .iconfont
-            font-size 38px
+          font-size 32px
         p
-          font-size 24px
+          font-size 32px
+          margin-bottom 90px 
 </style>
