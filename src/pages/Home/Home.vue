@@ -644,9 +644,7 @@
             img
               width 138px
               height 40px
-              
           .header_top_center
-            
             line-height 56px
             background #EDEDED
             width 700px

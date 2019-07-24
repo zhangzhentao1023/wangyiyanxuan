@@ -11,7 +11,6 @@ export default {
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 #notelogin
-  background-color #f2f5f4
   height 100%
   z-index 20
   header

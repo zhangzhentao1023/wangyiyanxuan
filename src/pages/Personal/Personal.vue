@@ -50,7 +50,27 @@
     <div>
       <button class="btn" @click="$router.push('/shopping')">购物车</button>
     </div>
-  </header>    
+  </header>
+  <div class="top-img">
+      <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
+  </div>
+  <div class="inputphone">  <!-- 输入手机号 -->
+    <input type="text" placeholder="请输入手机号">
+  </div>   
+  <div class="inputcode">   <!-- 获取验证码 -->
+    <input type="text" placeholder="请输入手机验证码">
+    <button>获取验证码</button>
+  </div>
+  <div class="help">
+    <span class="left">遇到问题</span>
+    <span class="right">使用密码验证登录</span>
+  </div>
+  <div class="loginwrap">
+    <div class="loginbtn">登录</div>  
+  </div> 
+  <div class="other">
+    <div class="otherlogin" @click="$router.push('/personal')">其他登录方式</div>  
+  </div> 
 </div>
 
 <!-- 邮箱登录 -->
@@ -62,6 +82,25 @@
       <button class="btn" @click="$router.push('/shopping')">购物车</button>
     </div>
   </header>
+  <div class="top-imglogo">
+    <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
+  </div>
+  <div class="youxiang">  <!-- 邮箱账号 -->
+    <input type="text" placeholder="邮箱账号">
+  </div>
+  <div class="mima">  
+    <input type="text" placeholder="密码">
+  </div>
+  <div class="login-help">
+    <span class="left">注册账号</span>
+    <span class="right">忘记密码</span>
+  </div>
+  <div class="loginwrap2">
+    <div class="loginbtn2">登录</div>  
+  </div> 
+  <div class="other2">
+    <div class="otherlogin2" @click="$router.push('/personal')">其他登录方式</div>  
+  </div>
 </div>
   
 </div>
@@ -73,7 +112,7 @@ export default {
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
- #login
+  #login
     background-color #f2f5f4
     height 100%
     z-index 20
@@ -141,11 +180,142 @@ export default {
       justify-content center
       margin-top 300px
       padding-bottom 85px
-      
         span
           font-size 30px
           color #7f7f7f
           margin-right 40px
         .split
           font-size 40px
+  
+  #phonelogin   /* 手机登录页面的样式 */
+    width 100%
+    height 100%
+    .top-img
+      img 
+        width 192px
+        height 63.98px
+        margin-top 200px
+        margin-left 250px
+    .inputphone
+      margin-top 180px
+      text-align center
+      width 675px
+      height 90px
+      input 
+        width 620px
+        line-height 90px
+        border none
+        border-bottom 0.013333rem solid #bdbdbd
+    .inputcode
+      text-align center
+      width 675px
+      height 90px
+      position relative
+      input 
+        width 620px
+        line-height 90px
+        border none
+        border-bottom 0.013333rem solid #bdbdbd
+      button
+        /* display flex */
+        position absolute
+        top 20px
+        right 0
+    .help
+      width 679px
+      height 36px
+      margin 0 auto
+      margin-top 30px 
+      .left
+        float left
+      .right
+        float right 
+        margin-right 20px
+    .loginwrap
+      margin-left 30px
+      width 679px
+      height 98px
+      margin-top 20px
+      background-color #b4282d
+      .loginbtn
+        font-size 0.373333rem
+        color #ffffff
+        margin-left 320px
+        line-height 98px
+        justify-content space-between 
+    .other
+      width 679px
+      height 98px
+      margin-top 20px
+      margin-left 30px
+      text-align center
+      .otherlogin
+        justify-content space-between
+        line-height 98px
+        color #b4282d
+        font-size 0.373333rem
+        border 0.013333rem solid #b4282d
+  #notelogin    /* 邮箱登录 */
+    width 100%
+    height 10000px
+    .top-imglogo
+      img 
+        width 192px
+        height 63.98px
+        margin-top 200px
+        margin-left 250px
+    .youxiang
+      margin-top 180px
+      text-align center
+      width 675px
+      height 90px
+      input 
+        width 620px
+        line-height 90px
+        border none
+        border-bottom 0.013333rem solid #bdbdbd
+    .mima
+      text-align center
+      width 675px
+      height 90px
+      position relative
+      input 
+        width 620px
+        line-height 90px
+        border none
+        border-bottom 0.013333rem solid #bdbdbd
+    .login-help
+      width 679px
+      height 36px
+      margin 0 auto
+      margin-top 30px 
+      .left
+        float left
+      .right
+        float right 
+        margin-right 20px
+    .loginwrap2
+      margin-left 30px
+      width 679px
+      height 98px
+      margin-top 20px
+      background-color #b4282d
+      .loginbtn2
+        font-size 0.373333rem
+        color #ffffff
+        margin-left 320px
+        line-height 98px
+        justify-content space-between 
+    .other2
+      width 679px
+      height 98px
+      margin-top 20px
+      margin-left 30px
+      text-align center
+      .otherlogin2
+        justify-content space-between
+        line-height 98px
+        color #b4282d
+        font-size 0.373333rem
+        border 0.013333rem solid #b4282d
 </style>

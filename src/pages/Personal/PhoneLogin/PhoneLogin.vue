@@ -27,7 +27,7 @@ export default {
     .btn
       background-color #fafafa
       border none
-    
+  
 
 
 </style>

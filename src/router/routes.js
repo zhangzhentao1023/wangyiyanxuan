@@ -5,6 +5,7 @@ import Shopping from '../pages/Shopping/Shopping.vue'
 import Things from '../pages/Things/Things.vue'
 import NoteLogin from '../pages/Personal/NoteLogin/NoteLogin.vue'
 import PhoneLogin from '../pages/Personal/PhoneLogin/PhoneLogin.vue'
+import ZhenXuan from '../pages/Things/ZhenXuan/ZhenXuan.vue'
 export default[
     { path: '/home', 
     component: Home,
@@ -22,7 +23,12 @@ export default[
     component: Things,
     meta: { 
       Footer:true
-     } 
+     },
+     children:[
+       { path: '/things/zhenxuan',
+       component: ZhenXuan
+       }
+     ] 
     },
     { path: '/shopping', 
     component: Shopping,
