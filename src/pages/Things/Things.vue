@@ -25,40 +25,71 @@
     <!-- 导航下的分割线 -->
     <div class="splist"></div>
     <!-- 中间的地方 -->
-    <div class="content">
-      <h3>
-        <div>
-          <img src="https://yanxuan.nosdn.127.net/a714aeeb574585d3e23d35f1ee2db8b8.png" alt="">
+    <div v-for="(item, index) in listArr" :key="index">
+      <div>
+        <!-- 中间大图的 -->
+        <div class="content">
+          <h3>
+            <div>
+              <img src="https://yanxuan.nosdn.127.net/a714aeeb574585d3e23d35f1ee2db8b8.png" alt="">
+            </div>
+            <span>选妹</span>
+          </h3>
+          <p class="wenben">
+            夏凉用品购置指南，凉席、空调被、凉感四件套每满100立减20
+          </p>
+          <div class="bigimg">
+            <img src="https://yanxuan.nosdn.127.net/ae09169ca36f7adc57458c5a371ab6df.jpg" alt="">
+          </div>
+          <div class="see">
+            <i class="iconfont iconkanguo"></i>
+            <span>9521人看过</span>
+          </div>
         </div>
-        <span>选妹</span>
-      </h3>
-      <p class="wenben">
-        夏凉用品购置指南，凉席、空调被、凉感四件套每满100立减20
-      </p>
-      <div class="bigimg">
-        <img src="https://yanxuan.nosdn.127.net/ae09169ca36f7adc57458c5a371ab6df.jpg" alt="">
-      </div>
-     
-      <div class="see">
-        <i class="iconfont iconkanguo"></i>
-        <span>9521人看过</span>
+        <!-- 分割线 -->
+        <div class="splist2"></div>
+        <!-- 中间小图的 -->
+        <div class="con">
+          <h3>
+            <div>
+              <img src="https://yanxuan.nosdn.127.net/1ecf5d57d84b7ae03905404131dc2c10.jpg" alt="">
+            </div>
+            <span>网易文漫：小蕙</span>
+          </h3>
+          <div class="tupian">
+            <img src="https://yanxuan.nosdn.127.net/119ea021198fbc19e7d0cb76c718e324.jpg" alt="">
+          </div>
+          <div class="wenben2">
+            <p>大牌最爱的玻尿酸原液， 1瓶等于20片面膜</p>
+          </div>
+          <div class="see2">
+            <i class="iconfont iconkanguo"></i>
+            <span>9521人看过</span>
+          </div>
+        </div>
       </div>
     </div>
+    
+    
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import {reqRecommendData} from '../../api/index'
   export default {
     data(){
       return {
-        listArr: []
+        listArr: ''
       }
     },
-    mounted () {
+    async mounted () {
       new BScroll('.wrap',{
         scrollX: true
       })
+      const ddd = await reqRecommendData()
+      this.listArr= ddd
+      console.log(ddd.data)
     }
   }
 </script>
@@ -129,6 +160,7 @@
           text-align center
           line-height 54px
           margin-left 20px
+          
       .wenben
         font-size 0.426667rem
         color #333
@@ -153,5 +185,41 @@
         span 
           margin-left 40px
           height 31px
-
+    .splist2
+      width 750px
+      height 20px
+      background #f4f4f4
+    .con
+      width 750px
+      height 340px
+      background #fafafa
+      padding 32px 30px
+      h3
+        display flex
+        width 690px
+        height 54px
+        div
+          img 
+            width 54px
+            height 54px
+            border-radius 50%
+        span 
+          text-align center
+          line-height 54px
+          margin-left 20px
+      .tupian
+        position relative
+        width 272px
+        img 
+          float right
+          width 272px
+          height 272px
+          position absolute
+          top -50px
+          left 420px
+      .wenben2
+        font-size 0.48rem
+        color #333
+        margin-top 40px
+        width 410px
 </style>

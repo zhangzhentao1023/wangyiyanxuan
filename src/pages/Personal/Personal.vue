@@ -55,16 +55,17 @@
       <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
   </div>
   <div class="inputphone">  <!-- 输入手机号 -->
-    <input type="text" placeholder="请输入手机号">
+    <input type="text" placeholder="请输入手机号" v-model="phone" @blur="testPhoneAndCode">
   </div>   
   <div class="inputcode">   <!-- 获取验证码 -->
-    <input type="text" placeholder="请输入手机验证码">
+    <input type="text" placeholder="请输入手机验证码" v-model="code" @blur="testPhoneAndCode2">
     <button>获取验证码</button>
   </div>
   <div class="help">
     <span class="left">遇到问题</span>
     <span class="right">使用密码验证登录</span>
   </div>
+   <div class="err">{{err}}</div>
   <div class="loginwrap">
     <div class="loginbtn">登录</div>  
   </div> 
@@ -86,15 +87,16 @@
     <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
   </div>
   <div class="youxiang">  <!-- 邮箱账号 -->
-    <input type="text" placeholder="邮箱账号">
+    <input type="text" placeholder="邮箱账号" v-model="mail" @blur="testMail">
   </div>
   <div class="mima">  
-    <input type="text" placeholder="密码">
+    <input type="text" placeholder="密码" v-model="pwd">
   </div>
   <div class="login-help">
     <span class="left">注册账号</span>
     <span class="right">忘记密码</span>
   </div>
+   <div class="err">{{err}}</div>
   <div class="loginwrap2">
     <div class="loginbtn2">登录</div>  
   </div> 
@@ -108,8 +110,37 @@
 
 <script>
 export default {
+  data() {
+    return {
+      phone: '',
+      code: '',
+      mail: '',
+      pwd: '',
+      err: ''
+
+    }
+  },
+  methods: {
+    //验证手机号
+    testPhoneAndCode() {
+      if(!(/^1[34578]\d{9}$/.test(this.phone)))
+        this.err="手机号码有误，请重填";
+    },
+    //验证验证码
+    testPhoneAndCode2() {
+      if (!/^\d{6}$/.test(this.code.trim()) && this.code) 
+        this.err="验证码格式错误";    
+    },
+    /* 邮箱的验证 */
+    testMail() {
+      if ( /^([A-Za-z0-9_\-\.])+\@(163.com|qq.com|42du.cn)$/){
+        alert('邮箱格式错误')
+      }
+    }
+  }
 
 }
+
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
   #login
@@ -231,6 +262,9 @@ export default {
       .right
         float right 
         margin-right 20px
+    .err
+      margin 20px
+      color red
     .loginwrap
       margin-left 30px
       width 679px

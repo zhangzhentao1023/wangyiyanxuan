@@ -10,8 +10,8 @@
       <!--左侧导航-->
       <section class="nav">
         <ul>
-          <li class="active">推荐专区</li>
-          <li>夏凉专区</li>
+          <li v-for="(item, index ) in list" :key="index">{{item.name}}</li>
+         <!--  <li>夏凉专区</li>
           <li>爆品专区</li>
           <li>新品专区</li>
           <li>居家生活</li>
@@ -21,7 +21,7 @@
           <li>母婴亲子</li>
           <li>运动旅行</li>
           <li>数码家电</li>
-          <li>全球特色</li>
+          <li>全球特色</li> -->
         </ul>
       </section>
       <!--右侧-->
@@ -29,11 +29,11 @@
         <div>
           <img src="https://yanxuan.nosdn.127.net/cb225335d4a438564040f00b448e8db8.png?imageView&thumbnail=0x196">
           <ul>
-            <li >
-              <img src="https://yanxuan.nosdn.127.net/56486ce98e6ba7ae59a617759e739b09.png?imageView&quality=85&thumbnail=144x144">
-              <span>员工精选好货</span>
+            <li>
+              <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png">
+              <span>丁磊的好货推荐</span>
             </li>
-            <li >
+            <!-- <li >
               <img src="https://yanxuan.nosdn.127.net/9e9d99bd69e60ed0aaa43c880bdf295b.png?imageView&quality=85&thumbnail=144x144">
               <span>优选美食每满88-10</span>
             </li>
@@ -96,7 +96,7 @@
             <li >
               <img src="https://yanxuan.nosdn.127.net/60fd8b80c8a057af9255d2c1a31f82ce.png?imageView&quality=85&thumbnail=144x144">
               <span>999+好评</span>
-            </li>
+            </li> -->
           </ul>
         </div>
       </section>
@@ -104,15 +104,23 @@
   </div>
 </template>
 <script>
-/* import BScroll from 'better-scroll' */
+import BScroll from 'better-scroll'
+import {reqCategoryList} from '../../api/index'
 export default {
-/*   data() {
+  data() {
+    return {
+      list: '',
+    }
   },
-  mounted(){
+  async mounted() {
+    //左侧导航滑动
     new BScroll('.nav', {
       scrollY : true
     })
-  } */
+    const bbb= await reqCategoryList()
+    this.list = bbb.data.categoryL1List
+    console.log(bbb.data.categoryL1List)
+  }
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">

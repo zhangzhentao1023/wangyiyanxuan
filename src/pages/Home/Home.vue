@@ -12,7 +12,8 @@
           <!-- 中间部分 -->
           <div class="header_top_center">
             <i class=""></i>
-            <span>搜索商品,共1314款好物</span> 
+            <!-- <span>搜索商品,共1314款好物</span>  -->
+            <input type="text" placeholder="搜索商品,共1314款好物"></input>
           </div>
           <!-- 登录 -->
           <button class="loginBtn" @click="$router.push('/personal')">登录</button>
@@ -73,14 +74,14 @@
     <div class="home_swiper">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/2f9c81a130447f34424a16a40d66cbba.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
-          <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/e1838f8442e7bfef014070ff902a698f.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
+          <div class="swiper-slide" v-for="(item , index ) in list" :key="index"><img :src="item.titlePicUrl" alt=""></div>
+          <!-- <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/e1838f8442e7bfef014070ff902a698f.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
           <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/8d2af3ab55bf51d5ac03e5d9c6fa1fc4.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
           <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/7c1ce80acc7625c23246cc99e9cd8f4a.png?imageView&quality=75&thumbnail=750x0" alt=""></div>
           <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/5d8d67832db5757f2941c3cfe0ffd558.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
           <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/542cc7564cffd33478c689c2380a9f91.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
           <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/387774a110c810fde93e77b331c968c8.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
-          <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/dd155ae0e9f700d878a89b918f73f392.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div>
+          <div class="swiper-slide"><img src="https://yanxuan.nosdn.127.net/dd155ae0e9f700d878a89b918f73f392.jpg?imageView&quality=75&thumbnail=750x0" alt=""></div> -->
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination"></div>  
@@ -592,15 +593,16 @@
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
   import BScroll from 'better-scroll'
-
+  import {reqHomeData} from '../../api/index'
   export default {
     data() {
       return {
         isShowCategory:false,
-        isShow:false
+        isShow:false,
+        list:''
       }
     },
-    mounted() {
+    async mounted() {
       var mySwiper = new Swiper ('.swiper-container', {
         //direction: 'vertical', // 垂直切换选项
         loop: true, // 循环模式选项
@@ -613,6 +615,9 @@
       var a= new BScroll('.headernav', {
         scrollX:true
       })
+      const aaa= await reqHomeData()
+      this.list= aaa.data.categoryModule
+      console.log(aaa.data.categoryModule)
     },
   }
 </script>
@@ -627,7 +632,7 @@
         position relative
         height 150px
         background #fff
-        z-index 21
+        z-index 12
         .header_top 
           position relative
           height 90px
@@ -654,9 +659,13 @@
             .icon-41
               font-size 38px
               margin-right 10px
-            span 
+            /* span 
+              color #666
+              font-size 27px */
+            input 
               color #666
               font-size 27px
+              outline none
           .loginBtn
             margin-left 16px
             width 200px
